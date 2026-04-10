@@ -2,6 +2,7 @@
 <html lang="en-us">
 
 <head>
+    <base href="https://cdn.jsdelivr.net/gh/mysticful/web-port@main/nso/">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Windose</title>
@@ -227,7 +228,7 @@
                 loadedBytes += value.length;
                 chunks.push(value);
                 let mbDone = (loadedBytes / (1024 * 1024)).toFixed(2);
-                let mbTotal = '352.72';
+                let mbTotal = '407.85';
                 loadingText.textContent = `LOADING... ${mbDone} MB / ${mbTotal} MB`;
             }
             let fullBuffer = new Uint8Array(received);
@@ -256,14 +257,12 @@
         (async () => {
             const [dataUrl, randombundle] = await Promise.all([
                 mergeFiles(getParts("Build/nsoweather2.data.unityweb", 1, 24), "nsoweather2.data.unityweb"),
+                mergeFiles(getParts("StreamingAssets/aa/WebGL/8229333135472637d0c8686ab331006d_ef7237aa9eb549052053aced3806fcb4.bundle_assets_all_ef7237aa9eb549052053aced3806fcb4.bundle", 1, 3), "8229333135472637d0c8686ab331006d_ef7237aa9eb549052053aced3806fcb4.bundle_assets_all_ef7237aa9eb549052053aced3806fcb4.bundle"),
             ]);
 
             window.randombundle = randombundle;
             const originalFetch = window.fetch;
             window.fetch = async function(input, init) {
-            if (input.includes("wasm.unityweb")) {
-            return originalFetch(input, init);
-                }
                 let urlString;
 
                 if (input instanceof Request) {
