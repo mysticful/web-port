@@ -81,7 +81,7 @@
             const canvas = document.querySelector("#unity-canvas");
             container.hidden = false;
 
-            // Simplified resize for modern browsers
+
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -90,7 +90,7 @@
             resizeCanvas();
 
             const script = document.createElement("script");
-            script.src = "daddyreeyuki.loader.js"; // Matches your screenshot
+            script.src = "daddyreeyuki.loader.js";
             script.onload = () => {
                 createUnityInstance(canvas, config, (progress) => {
                     document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
